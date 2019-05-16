@@ -19,4 +19,6 @@ public abstract class StudentRoomDatabase extends RoomDatabase {
 
         return INSTANCE;
     }
+
+    public abstract StudentDao studentDao();
 }

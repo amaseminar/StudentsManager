@@ -8,6 +8,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/students_list"
         android:layout_width="match_parent"
+        android:padding="8dp"
+        android:background="@color/gray"
         android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -14,6 +14,8 @@ public class StudentRepository {
     public StudentRepository(Application application) {
         StudentRoomDatabase db = StudentRoomDatabase.getDatabase(application);
         mStudentDao = db.studentDao();
+
+        mAllStudents = mStudentDao.getAllStudents();
     }
 
     public LiveData<List<Student>> getAllStudents() {
@@ -21,7 +23,7 @@ public class StudentRepository {
     }
 
     void insert(Student student) {
-
+        new InsertAsyncTask(mStudentDao).execute(student);
     }
 
     private static class InsertAsyncTask extends AsyncTask<Student, Void, Void> {

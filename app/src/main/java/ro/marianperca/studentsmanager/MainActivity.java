@@ -12,6 +12,8 @@ import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,16 +24,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        studentViewModel = ViewModelProviders.of(this)
-                .get(StudentViewModel.class);
+        RecyclerView recyclerView = findViewById(R.id.students_list);
 
+        final StudentListAdapter adapter = new StudentListAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        studentViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
         studentViewModel.getAllStudents().observe(this, new Observer<List<Student>>() {
             @Override
             public void onChanged(List<Student> students) {
-                for (Student s : students) {
-                    Log.d("###", s.toString());
-                }
+                adapter.setStudents(students);
             }
         });
 

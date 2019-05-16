@@ -7,6 +7,12 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "students")
 public class Student {
 
+    public Student(@NonNull String email, String name, int age) {
+        this.email = email;
+        this.name = name;
+        this.age = age;
+    }
+
     @PrimaryKey
     @NonNull
     private String email;
@@ -38,5 +44,14 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

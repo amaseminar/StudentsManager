@@ -25,4 +25,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+
+    // material design: for floatingbuttons / coordinator layout
+    implementation 'com.google.android.material:material:1.0.0'
+
+    // Room components
+    implementation "androidx.room:room-runtime:2.1.0-beta01"
+    annotationProcessor "androidx.room:room-compiler:2.1.0-beta01"
+    androidTestImplementation "androidx.room:room-testing:2.1.0-beta01"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
 }

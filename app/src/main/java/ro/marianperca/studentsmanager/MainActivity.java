@@ -2,8 +2,8 @@ package ro.marianperca.studentsmanager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -29,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
         final StudentListAdapter adapter = new StudentListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setClickListener(new StudentListAdapter.OnStudentClickListener() {
+            @Override
+            public void onClick(Student student) {
+                // todo: aici implementati ce trebuie sa se intample cand apasati pe un student din lista
+                Toast.makeText(MainActivity.this, student.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         studentViewModel = ViewModelProviders.of(this).get(StudentViewModel.class);
         studentViewModel.getAllStudents().observe(this, new Observer<List<Student>>() {
